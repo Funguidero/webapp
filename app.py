@@ -1,19 +1,9 @@
-import flask
 from flask import Flask
-from werkzeug.wrappers import Request, Response
+
+UPLOAD_FOLDER = 'static/uploads/'
+
 app = Flask(__name__)
-
-@app.route("/")
-
-
-def home():
-    app_main = """
-    <h1>HOLA</h1>
-    """
-    return app_main
-
-
-if __name__ == "__main__":
-    from werkzeug.serving import run_simple
-    run_simple('localhost', 9000, app)
+app.secret_key = "secret key"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
