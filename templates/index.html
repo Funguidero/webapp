@@ -5,11 +5,11 @@
     <script src="../static/js/script.js"></script>
 </head>
 <body>
-    <h2>Select an image to upload and display</h2>
+    <h2>Select multiple images to upload and display</h2>
 <p>
 	{% with messages = get_flashed_messages() %}
 	  {% if messages %}
-		<ul>
+		<ul class=flashes>
 		{% for message in messages %}
 		  <li>{{ message }}</li>
 		{% endfor %}
@@ -17,22 +17,26 @@
 	  {% endif %}
 	{% endwith %}
 </p>
-{% if filename %}
-	<div>
-		<img src="{{ url_for('display_image', filename=filename) }}">
-	</div>
-{% endif %}
+
 <form method="post" action="/" enctype="multipart/form-data">
     <dl>
 		<p>
-			<input type="file" name="file" autocomplete="off" required>
+			<input type="file" name="files[]" multiple="true" autocomplete="off" required>
 		</p>
     </dl>
     <p>
 		<input type="submit" value="Submit">
 	</p>
 </form>
-    <h1>Aplicación para setas</h1> -->
+
+{% if filenames %}
+	{% for filename in filenames %}
+		<div>
+			<img src="{{ url_for('display_image', filename=filename) }}">
+		</div>
+	{% endfor %}
+{% endif %}
+    <h1>Aplicación para setas</h1>
     <div class="file-area">
         <input type="file">
         <div class="file-dummy">
