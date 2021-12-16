@@ -1,49 +1,50 @@
-<!doctype html>
+<html lang="es">
 <head>
     <title>Setas App</title>
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/script.js"></script>
 </head>
 <body>
-    <h2>Select multiple images to upload and display</h2>
-<p>
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-		<ul class=flashes>
-		{% for message in messages %}
-		  <li>{{ message }}</li>
-		{% endfor %}
-		</ul>
-	  {% endif %}
-	{% endwith %}
-</p>
+    <h1>Aplicación para setas</h1>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
 
 <form method="post" action="/" enctype="multipart/form-data">
-    <dl>
+    <!-- <dl>
 		<p>
-			<input type="file" name="files[]" multiple="true" autocomplete="off" required>
+			<input type="file" name="file" autocomplete="off" required>
 		</p>
-    </dl>
-    <p>
-		<input type="submit" value="Submit">
-	</p>
-</form>
-
-{% if filenames %}
-	{% for filename in filenames %}
-		<div>
-			<img src="{{ url_for('display_image', filename=filename) }}">
-		</div>
-	{% endfor %}
-{% endif %}
-    <h1>Aplicación para setas</h1>
+    </dl> -->
     <div class="file-area">
-        <input type="file">
+        <input type="file" name="file" id="file" accept="image/*">
         <div class="file-dummy">
             <span class="default">Click to select a file, or drag it here</span>
             <span class="success">Great, your file is selected</span>
         </div>
     </div>
+    <!-- <div>
+        <button>Subir</button>
+    </div> -->
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+</form>
+
+{% if filename %}
+	<div>
+		<img src="{{ url_for('display_image', filename=filename) }}">
+	</div>
+{% endif %}
+    
     
     <style>
         .file-area {
