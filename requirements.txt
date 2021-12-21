@@ -1,4 +1,8 @@
-main.py
+os
+numpy
+tensorflow
+flask
+# main.py
 # templates
 # static
 # models
