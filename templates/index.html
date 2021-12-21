@@ -6,6 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
+    <link href="static/images/favicon.png" rel="icon" type="image/x-icon" />
 </head>
 <body>
     <div class="header">
@@ -16,15 +18,11 @@
         <form class="formInit" method="post" action="/" enctype="multipart/form-data">
             <div class="uploadContainerInit">
                 <div class="uploadSelectInit">
-                    <!-- <label for="imgSelected">
-                        <img src="static/images/image_icon.png" alt="upload_img">
-                    </label> -->
-                    <!-- <input id="imgSelected" type="file" name="imageFile" accept="image/*"> -->
-                    <span>Sube una imagen</span>
+                    <span class="uploadText">Sube una imagen</span>
                     <input type="file" name="imageFile" accept="image/*">
                 </div>
                 <div class="uploadConfirmInit">
-                    <input id="submitBtn" type="submit" value="Enviar">
+                    <input class="submitBtn" id="submitBtn" type="submit" value="Enviar">
                     <p>{{ fileName }}</p>
                 </div>
             </div>

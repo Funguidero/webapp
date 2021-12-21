@@ -1,6 +1,6 @@
 import os
 import numpy as np
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 from tensorflow import compat as tf_compat
 from tensorflow.keras import preprocessing as tf_preprocessing
 from tensorflow import expand_dims as tf_expand_dims
@@ -157,12 +157,12 @@ dict_hongos = {
             other='Aunque comestible, se considera de mediocre calidad.'),
 }
 
-@app.route('./', methods=['GET'])
+@app.route('/', methods=['GET'])
 def index():
     # Main page
     return render_template('index.html')
 
-@app.route('./', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
 
     # Cleaning uploads
