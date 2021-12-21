@@ -1,4 +1,3 @@
-.git
 main.py
 templates
 static
