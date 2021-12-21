@@ -1,7 +1,2 @@
-Flask
-flask.request
-flask.render_template
-tensorflow.compat
-tensorflow.keras.preprocessing
-tensorflow.expand_dims
-tensorflow.nn.softmax
+flask
+tensorflow-cpu
