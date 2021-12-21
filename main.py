@@ -168,7 +168,7 @@ def predict():
     # Cleaning uploads
     image_path = "./static/uploads/"
     carpeta = os.listdir(image_path)
-    if len(carpeta)>0: 
+    if len(carpeta)>1: 
         for img in carpeta: os.remove(os.path.join(image_path, img))
 
     setapredecible = request.files['imageFile']

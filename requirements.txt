@@ -1,4 +1,4 @@
 flask
 tensorflow-cpu
 gunicorn
-Pillow
+Pillow==2.6.1
