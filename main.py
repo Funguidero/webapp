@@ -1,7 +1,7 @@
 import os
 import numpy as np
-import tensorflow as tf
 from flask import Flask, request, render_template
+import tensorflow as tf
 
 app = Flask(__name__)
 
