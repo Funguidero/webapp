@@ -1,0 +1,6 @@
+.git
+main.py
+templates
+static
+models
+requirements.txt
