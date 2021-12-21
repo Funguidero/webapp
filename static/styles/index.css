@@ -1,0 +1,216 @@
+html {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin: 0px;
+  background-color: #e0f7df;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
+  background-color: #8FBC8F;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.formInit {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.uploadContainerInit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 75%;
+  height: 75%;
+  box-sizing: border-box;
+  margin-top: 50px;
+  padding: 10px;
+  /* border: dashed 2px;
+  border-color: #8FBC8F; */
+}
+
+.uploadSelectInit {
+  width: 100%;
+  height: 100%;
+  margin: 0 10px;
+  transition: 0.5s;
+  border: dashed 2px;
+  border-color: #8FBC8F;
+}
+
+.uploadSelectInit input[type=file] {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 10px;
+}
+
+.uploadSelectInit:hover {
+  transform: scale(1.01);
+}
+
+#imgSelected {
+  display: none;
+}
+
+.uploadConfirmInit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.submitBtn {
+  margin: 10px;
+  padding: 5px 20px;
+  border: 0;
+  color: white;
+  background-color: #15541a;
+  transition: 0.5s;
+}
+
+.submitBtn:hover {
+  margin: 10px;
+  padding: 5px 20px;
+  background-color: #1d8224;
+  border-radius: 8px;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.info {
+  padding: 0 60px;
+  font-size: 1.1em;
+  text-align: center;
+  background-color: antiquewhite;
+  border-radius: 0 0 10px 10px;
+}
+
+.dataCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  margin: 20px 60px;
+  background-color: #8FBC8F;
+  border-radius: 8px;
+}
+
+.imgCard {
+  width: 500px;
+  padding: 20px;
+}
+
+.imgCard img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.imgDetails {
+  width: 50%;
+  height: 100%;
+  margin: 10px 0;
+  padding: 0 30px;
+  border-left: solid 1px;
+  border-color: #15541a;
+}
+
+.title1 {
+  text-align: center;
+  font-size: 48px;
+}
+
+.title2 {
+  text-align: center;
+  font-size: 32px;
+}
+
+.td-left {
+  min-width: 200px;
+  padding: 5px;
+  font-size: 1.1em;
+  text-align: right;
+  vertical-align: top;
+}
+
+.td-right {
+  min-width: 200px;
+  padding: 5px;
+  font-size: 1.1em;
+  vertical-align: top;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+
+.imgSelectBtn {
+  background-color: gray;
+  border: solid 1px;
+}
+
+.uploadSelect:hover {
+  transform: scale(1.03);
+}
+
+.uploadConfirm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.footer {
+  font-family: 'Fira Sans', sans-serif;
+  width: 100%;
+  bottom: 0;
+  background-color: #8FBC8F;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  width: 16px;
+}
+
+.contact-list {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}

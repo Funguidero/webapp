@@ -1,91 +1,147 @@
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Setas App</title>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <script src="../static/js/script.js"></script>
+    <title>App setas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300&family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Aplicación para setas</h1>
-    <p>
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul>
-            {% for message in messages %}
-              <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-          {% endif %}
-        {% endwith %}
-    </p>
-
-<form method="post" action="/" enctype="multipart/form-data">
-    <!-- <dl>
-		<p>
-			<input type="file" name="file" autocomplete="off" required>
-		</p>
-    </dl> -->
-    <div class="file-area">
-        <input type="file" name="file" id="file" accept="image/*">
-        <div class="file-dummy">
-            <span class="default">Click to select a file, or drag it here</span>
-            <span class="success">Great, your file is selected</span>
+    <div class="header">
+        <a href="/"><img src="static/images/setorium_v1.png" alt="logo_setorium"/></a>
+    </div>
+    <div class="main">
+        {% if not data1 %}
+        <form class="formInit" method="post" action="/" enctype="multipart/form-data">
+            <div class="uploadContainerInit">
+                <div class="uploadSelectInit">
+                    <!-- <label for="imgSelected">
+                        <img src="static/images/image_icon.png" alt="upload_img">
+                    </label> -->
+                    <!-- <input id="imgSelected" type="file" name="imageFile" accept="image/*"> -->
+                    <span>Sube una imagen</span>
+                    <input type="file" name="imageFile" accept="image/*">
+                </div>
+                <div class="uploadConfirmInit">
+                    <input id="submitBtn" type="submit" value="Enviar">
+                    <p>{{ fileName }}</p>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+        {% if data1 %}
+        <div class="dataContainer">
+            {% if pred %}<div class="info">{{pred}}</div>{% endif %}
+            <div class="dataCard">
+                <div class="imgCard">
+                    <img src="{{ pathfile }}">
+                </div>
+                <div class="imgDetails">
+                    <div class="title1"><b>{{prob1}}% {{data1.name.title()}}</b></div>
+                    <table>
+                        <tr>
+                            <td class="td-left"><b>Nombre de la seta: </b></td>
+                            <td class="td-right">{{data1.name}}{% if data1.common_name %} ({{data1.common_name}}){% endif %}</td>
+                        </tr>
+                        {% if data1.toxicity %}
+                        <tr>
+                            <td class="td-left"><b>Toxicidad: </b></td>
+                            <td class="td-right">{{data1.toxicity|safe}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data1.habitat %}
+                        <tr>
+                            <td class="td-left"><b>Hábitat: </b></td>
+                            <td class="td-right">{{data1.habitat}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data1.season %}
+                        <tr>
+                            <td class="td-left"><b>Temporada: </b></td>
+                            <td class="td-right">{{data1.season}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data1.other %}
+                        <tr>
+                            <td class="td-left"><b>Otras características: </b></td>
+                            <td class="td-right">{{data1.other}}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    <hr>
+                    <div class="title2"><b>{{prob2}}% {{data2.name.title()}}</b></div>
+                    <table>
+                        <tr>
+                            <td class="td-left"><b>Nombre de la seta: </b></td>
+                            <td class="td-right">{{data2.name}}{% if data2.common_name %} ({{data2.common_name}}){% endif %}</td>
+                        </tr>
+                        {% if data2.toxicity %}
+                        <tr>
+                            <td class="td-left"><b>Toxicidad: </b></td>
+                            <td class="td-right">{{data2.toxicity|safe}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data2.habitat %}
+                        <tr>
+                            <td class="td-left"><b>Hábitat: </b></td>
+                            <td class="td-right">{{data2.habitat}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data2.season %}
+                        <tr>
+                            <td class="td-left"><b>Temporada: </b></td>
+                            <td class="td-right">{{data2.season}}</td>
+                        </tr>
+                        {% endif %}
+                        {% if data2.other %}
+                        <tr>
+                            <td class="td-left"><b>Otras características: </b></td>
+                            <td class="td-right">{{data2.other}}</td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+            </div>
+            <form class="form" method="post" action="/" enctype="multipart/form-data">
+                <div class="uploadContainer">
+                    <div class="uploadSelect">
+                        <label for="imgSelected" class="submitBtn">
+                            Subir otra imagen
+                            <!-- <button type="text">Subir otra imagen</button> -->
+                            <!-- <img src="static/images/image_icon.png" alt="upload_img"> -->
+                            <!-- <span class="ImgSelectBtn">Elegir otra imagen</span> -->
+                        </label>
+                        <input id="imgSelected" type="file" name="imageFile" accept="image/*">
+                    </div>
+                    <div class="uploadConfirm">
+                        <input class="submitBtn" type="submit" value="Enviar">
+                        <p>{{ fileName }}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <div class="contact-list">
+            <div class="contact">
+                <span>Sheila Santos Rosell</span>
+                <a href="https://github.com/ecoplayer" target="_blank" class="icons"><img src="static/images/github.png" alt="github_icon" class="icon"></a>  
+                <a href="https://www.linkedin.com/in/sheila-santos-rosell/" target="_blank" class="icons"><img src="static/images/linkedin.png" alt="linkedin_icon" class="icon"></a>
+            </div>
+            <div class="contact">
+                <span>JC Pardo Medina</span>
+                <a href="https://github.com/JC-Pardo-Medina" target="_blank" class="icons"><img src="static/images/github.png" alt="github_icon" class="icon"></a> 
+                <a href="https://www.linkedin.com/in/juan-carlos-pardo-medina-ba3628132/" target="_blank" class="icons"><img src="static/images/linkedin.png" alt="linkedin_icon" class="icon"></a> 
+            </div>
+            <div class="contact">
+                <span>Héctor Martínez</span>
+                <a href="https://github.com/Thornnk" target="_blank" class="icons"><img src="static/images/github.png" alt="github_icon" class="icon"></a> 
+                <a href="https://www.linkedin.com/in/hector-md/" target="_blank" class="icons"><img src="static/images/linkedin.png" alt="linkedin_icon" class="icon"></a>
+            </div>
         </div>
     </div>
-    <!-- <div>
-        <button>Subir</button>
-    </div> -->
-    <p>
-		<input type="submit" value="Submit">
-	</p>
-</form>
 
-{% if filename %}
-	<div>
-		<img src="{{ url_for('display_image', filename=filename) }}">
-	</div>
-{% endif %}
-    
-    
-    <style>
-        .file-area {
-            width: 100%;
-            position: relative;
-            font-size: 18px;
-        }
-        .file-area input[type=file] {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-        .file-area .file-dummy {
-            width: 100%;
-            padding: 50px 30px;
-            border: 2px dashed #ccc;
-            background-color: #fff;
-            text-align: center;
-            transition: background 0.3s ease-in-out;
-        }
-        .file-area .file-dummy .success {
-            display: none;
-        }
-        .file-area:hover .file-dummy {
-            border: 2px dashed #1abc9c;
-        }
-        .file-area input[type=file]:valid + .file-dummy {
-            border-color: #1abc9c;
-        }
-        .file-area input[type=file]:valid + .file-dummy .success {
-            display: inline-block;
-        }
-        .file-area input[type=file]:valid + .file-dummy .default {
-            display: none;
-        }
-    </style>
 </body>
 </html>
