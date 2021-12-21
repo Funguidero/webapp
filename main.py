@@ -191,9 +191,9 @@ def predict():
             pred_details = f'No puedo dar una estimación muy segura, esta seta podría no estar en mi base de datos. Tal vez sea una {dict_hongos[snd_label].name.lower()}, aunque solo tengo un {fst_prob}% de probabilidad.'
         else:
             if fst_prob - snd_prob <15:
-                pred_details = f'El resultado no está muy claro. Podría ser una {dict_hongos[snd_label].name.lower()} con una probabilidad del {fst_prob} % o una {dict_hongos[fst_label].name.lower()} con una probabilidad del {snd_prob}%.'
+                pred_details = f'El resultado no está muy claro. Podría ser una {dict_hongos[snd_label].name.lower()} con una probabilidad del {fst_prob}% o una {dict_hongos[fst_label].name.lower()} con una probabilidad del {snd_prob}%.'
             else:
-                pred_details = f'El resultado deja muy poco lugar a la duda. Con una seguridad del {fst_prob} %, la seta es una {dict_hongos[fst_label].name.lower()}. La segunda opción más probable es una {dict_hongos[snd_label].name.lower()} con solo un {snd_prob} %.'
+                pred_details = f'El resultado deja muy poco lugar a la duda. Con una seguridad del {fst_prob}%, la seta es una {dict_hongos[fst_label].name.lower()}. La segunda opción más probable es una {dict_hongos[snd_label].name.lower()} con solo un {snd_prob}%.'
 
         return render_template("index.html",prob1=fst_prob,prob2=snd_prob,data1=dict_hongos[fst_label],data2=dict_hongos[snd_label],pred=pred_details,pathfile=image_path)
     else:

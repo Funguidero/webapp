@@ -16,16 +16,16 @@
     <div class="main">
         {% if not data1 %}
         <form class="formInit" method="post" action="/" enctype="multipart/form-data">
-            <div class="uploadContainerInit">
+            <!-- <div class="uploadContainerInit"> -->
+                <span class="uploadText">Sube una imagen</span>
                 <div class="uploadSelectInit">
-                    <span class="uploadText">Sube una imagen</span>
                     <input type="file" name="imageFile" accept="image/*">
                 </div>
                 <div class="uploadConfirmInit">
                     <input class="submitBtn" id="submitBtn" type="submit" value="Enviar">
                     <p>{{ fileName }}</p>
                 </div>
-            </div>
+            <!-- </div> -->
         </form>
         {% endif %}
         {% if data1 %}
