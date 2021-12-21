@@ -157,12 +157,12 @@ dict_hongos = {
             other='Aunque comestible, se considera de mediocre calidad.'),
 }
 
-@app.route('/', methods=['GET'])
+@app.route('./', methods=['GET'])
 def index():
     # Main page
     return render_template('index.html')
 
-@app.route('/', methods=['POST'])
+@app.route('./', methods=['POST'])
 def predict():
 
     # Cleaning uploads
