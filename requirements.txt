@@ -1,7 +1,2 @@
 tensorflow
 flask
-# main.py
-# templates
-# static
-# models
-# requirements.txt
