@@ -1,14 +1,17 @@
 import os
 import numpy as np
 from flask import Flask, request, render_template
-import tensorflow as tf
+from tensorflow import compat as tf_compat
+from tensorflow.keras import preprocessing as tf_preprocessing
+from tensorflow import expand_dims as tf_expand_dims
+from tensorflow.nn import softmax as tf_softmax
 
 app = Flask(__name__)
 
 MODEL_PATH = 'models/mobilenet_final.hd5'
 
 # Load your trained model
-model = tf.compat.v1.keras.experimental.load_from_saved_model(MODEL_PATH)
+model = tf_compat.v1.keras.experimental.load_from_saved_model(MODEL_PATH)
 
 class Mushroom:
     def __init__(self, name=None, common_name=None, toxicity=None, habitat=None, season=None, other=None):
@@ -174,13 +177,13 @@ def predict():
         image_path="./static/uploads/"+setapredecible.filename
         setapredecible.save(image_path)
 
-        img=tf.keras.preprocessing.image.load_img((image_path), target_size=(224, 224, 3))
+        img = tf_preprocessing.image.load_img((image_path), target_size=(224, 224, 3))
 
         # Processing and predicting
-        img_array = tf.keras.preprocessing.image.img_to_array(img)
-        img_array = tf.expand_dims(img_array, 0)  # Create a batch
+        img_array = tf_preprocessing.image.img_to_array(img)
+        img_array = tf_expand_dims(img_array, 0)  # Create a batch
         predictions = model.predict(img_array)
-        score = tf.nn.softmax(predictions[0])
+        score = tf_softmax(predictions[0])
         fst_prob, snd_prob = round(np.max(score)*100,2), round(np.sort(score)[-2:][0]*100,2)
         fst_label, snd_label = mushroom_names[np.argmax(score)], mushroom_names[np.argsort(score)[-2:][0]]
         
