@@ -188,10 +188,10 @@ def predict():
         fst_label, snd_label = mushroom_names[np.argmax(score)], mushroom_names[np.argsort(score)[-2:][0]]
         
         if fst_prob < 60:
-            pred_details = f'No puedo dar una estimación muy segura, esta seta podría no estar en mi base de datos. Tal vez sea una {dict_hongos[snd_label].name.lower()}, aunque solo tengo un {fst_prob}% de probabilidad.'
+            pred_details = f'No puedo dar una estimación muy segura, esta seta podría no estar en mi base de datos. Tal vez sea una {dict_hongos[fst_label].name.lower()}, aunque solo tengo un {fst_prob}% de probabilidad.'
         else:
             if fst_prob - snd_prob <15:
-                pred_details = f'El resultado no está muy claro. Podría ser una {dict_hongos[snd_label].name.lower()} con una probabilidad del {fst_prob}% o una {dict_hongos[fst_label].name.lower()} con una probabilidad del {snd_prob}%.'
+                pred_details = f'El resultado no está muy claro. Podría ser una {dict_hongos[fst_label].name.lower()} con una probabilidad del {fst_prob}% o una {dict_hongos[snd_label].name.lower()} con una probabilidad del {snd_prob}%.'
             else:
                 pred_details = f'El resultado deja muy poco lugar a la duda. Con una seguridad del {fst_prob}%, la seta es una {dict_hongos[fst_label].name.lower()}. La segunda opción más probable es una {dict_hongos[snd_label].name.lower()} con solo un {snd_prob}%.'
 

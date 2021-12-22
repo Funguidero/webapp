@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,300&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->
     <link href="static/images/favicon.png" rel="icon" type="image/x-icon" />
 </head>
 <body>
@@ -16,26 +15,22 @@
     <div class="main">
         {% if not data1 %}
         <form class="formInit" method="post" action="/" enctype="multipart/form-data">
-            <!-- <div class="uploadContainerInit"> -->
-                <span class="uploadText">Sube una imagen</span>
-                <div class="uploadSelectInit">
-                    <input type="file" name="imageFile" accept="image/*">
-                </div>
-                <div class="uploadConfirmInit">
-                    <input class="submitBtn" id="submitBtn" type="submit" value="Enviar">
-                    <p>{{ fileName }}</p>
-                </div>
-            <!-- </div> -->
+            <span class="uploadTextInit">Sube una imagen</span>
+            <div class="uploadSelectInit">
+                <input type="file" name="imageFile" accept="image/*">
+            </div>
+            <div class="uploadConfirmInit">
+                <input class="button" type="submit" value="Enviar">
+                <p>{{ fileName }}</p>
+            </div>
         </form>
         {% endif %}
         {% if data1 %}
-        <div class="dataContainer">
-            {% if pred %}<div class="info">{{pred}}</div>{% endif %}
-            <div class="dataCard">
-                <div class="imgCard">
-                    <img class="img" src="{{ pathfile }}">
-                </div>
-                <div class="imgDetails">
+        {% if pred %}<div class="info">{{pred}}</div>{% endif %}
+        <div class="dataCard">
+            <img class="img" src="{{ pathfile }}">
+            <div class="details">
+                <div class="details1">
                     <div class="title1"><b>{{prob1}}% {{data1.name.title()}}</b></div>
                     <table>
                         <tr>
@@ -67,7 +62,9 @@
                         </tr>
                         {% endif %}
                     </table>
-                    <hr>
+                </div>
+                <hr class="separator">
+                <div class="details2">
                     <div class="title2"><b>{{prob2}}% {{data2.name.title()}}</b></div>
                     <table>
                         <tr>
@@ -101,24 +98,17 @@
                     </table>
                 </div>
             </div>
-            <form class="form" method="post" action="/" enctype="multipart/form-data">
-                <div class="uploadContainer">
-                    <div class="uploadSelect">
-                        <label for="imgSelected" class="submitBtn">
-                            Subir otra imagen
-                            <!-- <button type="text">Subir otra imagen</button> -->
-                            <!-- <img src="static/images/image_icon.png" alt="upload_img"> -->
-                            <!-- <span class="ImgSelectBtn">Elegir otra imagen</span> -->
-                        </label>
-                        <input id="imgSelected" type="file" name="imageFile" accept="image/*">
-                    </div>
-                    <div class="uploadConfirm">
-                        <input class="submitBtn" type="submit" value="Enviar">
-                        <p>{{ fileName }}</p>
-                    </div>
-                </div>
-            </form>
         </div>
+        <form class="form" method="post" action="/" enctype="multipart/form-data">
+            <label for="imgSelected" class="button">
+                Subir otra imagen
+            </label>
+            <input id="imgSelected" type="file" name="imageFile" accept="image/*">
+            <span>{{ fileName }}</span>
+            <div class="uploadConfirm">
+                <input class="button" type="submit" value="Enviar">
+            </div>
+        </form>
         {% endif %}
     </div>
     <div class="footer">
