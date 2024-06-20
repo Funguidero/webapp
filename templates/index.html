@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Setorium, identificador de setas</title>
+    <title>Setorium</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,15 +9,24 @@
     <link href="static/images/favicon.png" rel="icon" type="image/x-icon" />
 </head>
 <body>
-    <div class="header">
+    <header title="Ir al Inicio" class="header">
         <a href="/"><img src="static/images/setorium_v1.png" alt="logo_setorium"/></a>
-    </div>
+    </header>
     <div class="main">
         {% if not data1 %}
-        <form class="formInit" method="post" action="/" enctype="multipart/form-data">
-            <span class="uploadTextInit">Sube una imagen</span>
-            <div class="uploadSelectInit">
-                <input type="file" name="imageFile" accept="image/*">
+        <h3 class="slogan"><em>Tu identificador de setas</em></h3>
+        <form class="form-upload" method="post" action="/" enctype="multipart/form-data">
+            <span class="upload-text">Sube una imagen</span>
+            <div class="upload-container">
+                <div class="file-unloaded">
+                    <p class="drag-text">Selecciona/Arrastra<br>tu imagen aquí</p>
+                    <input title="" id="imageInput" type="file" name="imageFile" accept="image/*" onchange="handleFileUpload()">
+                </div>
+                <div class="file-loaded hidden">
+                    <img id="imageIcon" src="static/images/image_icon.png" alt="image_icon">
+                    <span id="fileName">{{ filename }}</span>
+                    <span title="Quitar imagen" id="deleteIcon" class="delete-icon" onclick="removeFile()">⨯</span>
+                </div>
             </div>
             <div class="uploadConfirmInit">
                 <input class="button" type="submit" value="Enviar">
@@ -99,16 +108,16 @@
                 </div>
             </div>
         </div>
-        <form class="form" method="post" action="/" enctype="multipart/form-data">
-            <label for="imgSelected" class="button">
-                Subir otra imagen
-            </label>
-            <input id="imgSelected" type="file" name="imageFile" accept="image/*">
-            <span>{{ fileName }}</span>
-            <div class="uploadConfirm">
-                <input class="button" type="submit" value="Enviar">
-            </div>
-        </form>
+<!--        <form class="form" method="post" action="/" enctype="multipart/form-data">-->
+<!--            <label for="imgSelected" class="button">-->
+<!--                Subir otra imagen-->
+<!--            </label>-->
+<!--            <input id="imgSelected" type="file" name="imageFile" accept="image/*">-->
+<!--            <span>{{ fileName }}</span>-->
+<!--            <div class="uploadConfirm">-->
+<!--                <input class="button" type="submit" value="Enviar">-->
+<!--            </div>-->
+<!--        </form>-->
         {% endif %}
     </div>
     <div class="footer">
@@ -125,11 +134,11 @@
             </div>
             <div class="contact">
                 <span>Héctor Martínez</span>
-                <a href="https://github.com/Thornnk" target="_blank" class="icons"><img src="static/images/github.png" alt="github_icon" class="icon"></a> 
+                <a href="https://github.com/hnezado" target="_blank" class="icons"><img src="static/images/github.png" alt="github_icon" class="icon"></a>
                 <a href="https://www.linkedin.com/in/hector-md/" target="_blank" class="icons"><img src="static/images/linkedin.png" alt="linkedin_icon" class="icon"></a>
             </div>
         </div>
     </div>
-
+    <script src="static/js/script.js"></script>
 </body>
 </html>
